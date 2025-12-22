@@ -1,832 +1,1331 @@
 <!DOCTYPE html>
 <html lang="en" class="light">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>dev harry | Full Stack Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-   
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
     <style>
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        
-        .dark .project-card:hover {
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-        }
-        
-        .skill-pill {
-            transition: all 0.3s ease;
-        }
-        
-        .skill-pill:hover {
-            transform: scale(1.05);
-        }
+      .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
 
-        .timeline-item:hover .timeline-dot {
-            transform: scale(1.2);
-            background-color: #6366f1;
-        }
+      .dark .project-card:hover {
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      }
 
-        .timeline-item:hover .timeline-date {
-            color: #6366f1;
-            transform: translateX(5px);
-        }
+      .skill-pill {
+        transition: all 0.3s ease;
+      }
 
-        .about-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.1);
-        }
+      .skill-pill:hover {
+        transform: scale(1.05);
+      }
 
-        .dark .about-card:hover {
-            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.2);
-        }
+      .timeline-item:hover .timeline-dot {
+        transform: scale(1.2);
+        background-color: #6366f1;
+      }
 
-        .profile-image {
-            position: relative;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 4px solid #e0e7ff;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            transition: all 0.3s ease;
-        }
+      .timeline-item:hover .timeline-date {
+        color: #6366f1;
+        transform: translateX(5px);
+      }
 
-        .dark .profile-image {
-            border-color: #312e81;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.25), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
-        }
+      .about-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(99, 102, 241, 0.1);
+      }
 
-        .profile-image:hover {
-            transform: scale(1.05);
-            box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.25);
-        }
+      .dark .about-card:hover {
+        box-shadow: 0 10px 25px rgba(99, 102, 241, 0.2);
+      }
 
-        .profile-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(99, 102, 241, 0) 50%);
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
+      .profile-image {
+        position: relative;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 4px solid #e0e7ff;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        transition: all 0.3s ease;
+      }
 
-        .profile-image:hover::before {
-            opacity: 1;
-        }
+      .dark .profile-image {
+        border-color: #312e81;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.25),
+          0 10px 10px -5px rgba(0, 0, 0, 0.1);
+      }
 
-        .profile-image img {
-            transition: transform 0.3s ease;
-        }
+      .profile-image:hover {
+        transform: scale(1.05);
+        box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.25);
+      }
 
-        .profile-image:hover img {
-            transform: scale(1.1);
-        }
+      .profile-image::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(99, 102, 241, 0.2) 0%,
+          rgba(99, 102, 241, 0) 50%
+        );
+        z-index: 1;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
 
-        .gradient-footer {
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
-        }
+      .profile-image:hover::before {
+        opacity: 1;
+      }
 
-        [data-aos="fade-in"] {
-            opacity: 0;
-            transition: opacity 0.6s ease, transform 0.6s ease;
-            transform: translateY(20px);
-        }
+      .profile-image img {
+        transition: transform 0.3s ease;
+      }
 
-        [data-aos="fade-in"].aos-animate {
-            opacity: 1;
-            transform: translateY(0);
-        }
+      .profile-image:hover img {
+        transform: scale(1.1);
+      }
 
-        .certification-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.2);
-        }
-        
-        .testimonial-card {
-            transition: all 0.3s ease;
-        }
-        
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        
-        .dark .testimonial-card:hover {
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-        }
+      .gradient-footer {
+        background: linear-gradient(
+          135deg,
+          #6366f1 0%,
+          #8b5cf6 50%,
+          #d946ef 100%
+        );
+      }
+
+      [data-aos="fade-in"] {
+        opacity: 0;
+        transition: opacity 0.6s ease, transform 0.6s ease;
+        transform: translateY(20px);
+      }
+
+      [data-aos="fade-in"].aos-animate {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .certification-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(99, 102, 241, 0.2);
+      }
+
+      .testimonial-card {
+        transition: all 0.3s ease;
+      }
+
+      .testimonial-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .dark .testimonial-card:hover {
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      }
     </style>
-</head>
-<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+  </head>
+  <body
+    class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300"
+  >
     <!-- Header/Navigation -->
-    <header class="fixed w-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-sm z-10">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <a href="#" class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">Dev Harry</a>
-                
-                <div class="flex items-center space-x-6">
-                    <nav class="hidden md:flex space-x-8">
-                        <a href="#home" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Home</a>
-                        <a href="#about" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">About</a>
-                        <a href="#certifications" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Certifications</a>
-                        <a href="#testimonials" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Testimonials</a>
-                        <a href="#projects" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Projects</a>
-                        <a href="#skills" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Skills</a>
-                        <a href="#contact" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Contact</a>
-                    </nav>
-                    
-                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
-                        <i class="fas fa-moon dark:hidden"></i>
-                        <i class="fas fa-sun hidden dark:block"></i>
-                    </button>
-                    
-                    <button id="mobile-menu-button" class="md:hidden p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
-            </div>
+    <header
+      class="fixed w-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-sm z-10"
+    >
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+          <a
+            href="#"
+            class="text-2xl font-bold text-indigo-600 dark:text-indigo-400"
+            >Dev Harry</a
+          >
+
+          <div class="flex items-center space-x-6">
+            <nav class="hidden md:flex space-x-8">
+              <a
+                href="#home"
+                class="hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+                >Home</a
+              >
+              <a
+                href="#about"
+                class="hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+                >About</a
+              >
+              <a
+                href="#certifications"
+                class="hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+                >Certifications</a
+              >
+              <a
+                href="#testimonials"
+                class="hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+                >Testimonials</a
+              >
+              <a
+                href="#projects"
+                class="hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+                >Projects</a
+              >
+              <a
+                href="#skills"
+                class="hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+                >Skills</a
+              >
+              <a
+                href="#contact"
+                class="hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+                >Contact</a
+              >
+            </nav>
+
+            <button
+              id="theme-toggle"
+              class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition"
+            >
+              <i class="fas fa-moon dark:hidden"></i>
+              <i class="fas fa-sun hidden dark:block"></i>
+            </button>
+
+            <button
+              id="mobile-menu-button"
+              class="md:hidden p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition"
+            >
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
         </div>
-        
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden hidden bg-white dark:bg-gray-800 px-6 pb-4">
-            <div class="flex flex-col space-y-4">
-                <a href="#home" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Home</a>
-                <a href="#about" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">About</a>
-                <a href="#certifications" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Certifications</a>
-                <a href="#testimonials" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Testimonials</a>
-                <a href="#projects" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Projects</a>
-                <a href="#skills" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Skills</a>
-                <a href="#contact" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Contact</a>
-            </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="md:hidden hidden bg-white dark:bg-gray-800 px-6 pb-4"
+      >
+        <div class="flex flex-col space-y-4">
+          <a
+            href="#home"
+            class="hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+            >Home</a
+          >
+          <a
+            href="#about"
+            class="hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+            >About</a
+          >
+          <a
+            href="#certifications"
+            class="hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+            >Certifications</a
+          >
+          <a
+            href="#testimonials"
+            class="hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+            >Testimonials</a
+          >
+          <a
+            href="#projects"
+            class="hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+            >Projects</a
+          >
+          <a
+            href="#skills"
+            class="hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+            >Skills</a
+          >
+          <a
+            href="#contact"
+            class="hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+            >Contact</a
+          >
         </div>
+      </div>
     </header>
 
     <!-- Hero Section -->
     <section id="home" class="min-h-screen flex items-center pt-20">
-        <div class="container mx-auto px-6 py-12 md:py-24">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-12 md:mb-0" data-aos="fade-in">
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Hi, I'm <span class="text-indigo-600 dark:text-indigo-400">HarryPotter</span></h1>
-                    <h2 class="text-2xl md:text-3xl mb-6 text-gray-600 dark:text-gray-300">Full Stack Developer</h2>
-                    <p class="text-lg mb-8 max-w-lg text-gray-600 dark:text-gray-300">
-                        I build exceptional digital experiences with clean, efficient code. 
-                        Passionate about solving problems through technology and creating 
-                        user-friendly applications.
-                    </p>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#contact" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium transition">
-                            Contact Me
-                        </a>
-                        <a href="#" id="download-cv" class="border border-indigo-600 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-gray-800 px-6 py-3 rounded-lg font-medium transition">
-                            Download CV
-                        </a>
-                    </div>
-                </div>
-                <div class="md:w-1/2 flex justify-center" data-aos="fade-in" data-aos-delay="200">
-                    <div class="profile-image w-64 h-64 md:w-80 md:h-80">
-                        <img src="IMAGES/WhatsApp Image 2025-03-29 at 01.54.59_3a0e3588.jpg" 
-                             alt=" HARRY " 
-                             class="w-full h-full object-cover">
-                    </div>
-                </div>
+      <div class="container mx-auto px-6 py-12 md:py-24">
+        <div class="flex flex-col md:flex-row items-center">
+          <div class="md:w-1/2 mb-12 md:mb-0" data-aos="fade-in">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+              Hi, I'm
+              <span class="text-indigo-600 dark:text-indigo-400"
+                >HarryPotter</span
+              >
+            </h1>
+            <h2
+              class="text-2xl md:text-3xl mb-6 text-gray-600 dark:text-gray-300"
+            >
+              Full Stack Developer
+            </h2>
+            <p class="text-lg mb-8 max-w-lg text-gray-600 dark:text-gray-300">
+              I build exceptional digital experiences with clean, efficient
+              code. Passionate about solving problems through technology and
+              creating user-friendly applications.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a
+                href="#contact"
+                class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium transition"
+              >
+                Contact Me
+              </a>
+              <a
+                href="#"
+                id="download-cv"
+                class="border border-indigo-600 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-gray-800 px-6 py-3 rounded-lg font-medium transition"
+              >
+                Download CV
+              </a>
             </div>
+          </div>
+          <div
+            class="md:w-1/2 flex justify-center"
+            data-aos="fade-in"
+            data-aos-delay="200"
+          >
+            <div class="profile-image w-64 h-64 md:w-80 md:h-80">
+              <img
+                src="IMAGES/WhatsApp Image 2025-03-29 at 01.54.59_3a0e3588.jpg"
+                alt=" HARRY "
+                class="w-full h-full object-cover"
+              />
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="py-16 bg-white dark:bg-gray-800">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4" data-aos="fade-in">About Me</h2>
-            <p class="text-lg text-gray-600 dark:text-gray-300 text-center max-w-2xl mx-auto mb-12" data-aos="fade-in" data-aos-delay="100">
-                Get to know more about my journey, experience, and what drives me as a developer.
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center mb-4"
+          data-aos="fade-in"
+        >
+          About Me
+        </h2>
+        <p
+          class="text-lg text-gray-600 dark:text-gray-300 text-center max-w-2xl mx-auto mb-12"
+          data-aos="fade-in"
+          data-aos-delay="100"
+        >
+          Get to know more about my journey, experience, and what drives me as a
+          developer.
+        </p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div data-aos="fade-in">
+            <h3 class="text-2xl font-bold mb-6">Who I Am</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-6">
+              I'm a passionate Full Stack Developer with over 2years of
+              experience building web applications.
             </p>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div data-aos="fade-in">
-                    <h3 class="text-2xl font-bold mb-6">Who I Am</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-6">
-                        I'm a passionate Full Stack Developer with over 2years of experience building web applications. 
-                        
-                    </p>
-                    <p class="text-gray-600 dark:text-gray-300 mb-6">
-                        I specialize in PHP technologies across the stack, with expertise in modern 
-                        database solutions. I love creating intuitive user interfaces and robust backend systems.
-                    </p>
-                    <p class="text-gray-600 dark:text-gray-300 mb-8">
-                        When I'm not coding, you can find me watching anime, reading sci-fi novels, or experimenting with new 
-                        technologies in my crib.
-                    </p>
-                    
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="about-card bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md transition duration-300" data-aos="fade-in" data-aos-delay="100">
-                            <div class="text-3xl text-indigo-600 dark:text-indigo-400 mb-3">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <h4 class="font-bold text-lg mb-2">Clean Code</h4>
-                            <p class="text-gray-600 dark:text-gray-300 text-sm">
-                                I write maintainable, well-documented code following best practices.
-                            </p>
-                        </div>
-                        
-                        <div class="about-card bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md transition duration-300" data-aos="fade-in" data-aos-delay="150">
-                            <div class="text-3xl text-indigo-600 dark:text-indigo-400 mb-3">
-                                <i class="fas fa-lightbulb"></i>
-                            </div>
-                            <h4 class="font-bold text-lg mb-2">Problem Solver</h4>
-                            <p class="text-gray-600 dark:text-gray-300 text-sm">
-                                I thrive on solving complex problems with elegant solutions.
-                            </p>
-                        </div>
-                        
-                        <div class="about-card bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md transition duration-300" data-aos="fade-in" data-aos-delay="200">
-                            <div class="text-3xl text-indigo-600 dark:text-indigo-400 mb-3">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <h4 class="font-bold text-lg mb-2">Team Player</h4>
-                            <p class="text-gray-600 dark:text-gray-300 text-sm">
-                                I collaborate effectively and communicate clearly with teams.
-                            </p>
-                        </div>
-                        
-                        <div class="about-card bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md transition duration-300" data-aos="fade-in" data-aos-delay="250">
-                            <div class="text-3xl text-indigo-600 dark:text-indigo-400 mb-3">
-                                <i class="fas fa-rocket"></i>
-                            </div>
-                            <h4 class="font-bold text-lg mb-2">Fast Learner</h4>
-                            <p class="text-gray-600 dark:text-gray-300 text-sm">
-                                I quickly adapt to new technologies and frameworks.
-                            </p>
-                        </div>
-                    </div>
+            <p class="text-gray-600 dark:text-gray-300 mb-6">
+              I specialize in PHP technologies across the stack, with expertise
+              in modern database solutions. I love creating intuitive user
+              interfaces and robust backend systems.
+            </p>
+            <p class="text-gray-600 dark:text-gray-300 mb-8">
+              When I'm not coding, you can find me watching anime, reading
+              sci-fi novels, or experimenting with new technologies in my crib.
+            </p>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div
+                class="about-card bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md transition duration-300"
+                data-aos="fade-in"
+                data-aos-delay="100"
+              >
+                <div class="text-3xl text-indigo-600 dark:text-indigo-400 mb-3">
+                  <i class="fas fa-code"></i>
                 </div>
-                
-                <div data-aos="fade-in" data-aos-delay="100">
-                    <h3 class="text-2xl font-bold mb-6">My Journey</h3>
-                    <div class="space-y-8 relative">
-                        <!-- Timeline line -->
-                        <div class="absolute left-5 top-0 bottom-0 w-0.5 bg-indigo-200 dark:bg-indigo-900/50 transform -translate-x-1/2"></div>
-                        
-                        <!-- Timeline item 1 -->
-                        <div class="timeline-item relative pl-16" data-aos="fade-in" data-aos-delay="150">
-                            <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full bg-indigo-400 border-4 border-indigo-100 dark:border-indigo-900/50 transition duration-300"></div>
-                            <div class="timeline-date text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-1 transition duration-300">2025 - Present</div>
-                            <h4 class="text-xl font-bold mb-2">Senior Full Stack Developer</h4>
-                            <p class="text-gray-600 dark:text-gray-300">
-                                Leading development teams and architecting complex web applications for enterprise clients.
-                            </p>
-                        </div>
-                        
-                        <!-- Timeline item 2 -->
-                        <div class="timeline-item relative pl-16" data-aos="fade-in" data-aos-delay="200">
-                            <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full bg-indigo-400 border-4 border-indigo-100 dark:border-indigo-900/50 transition duration-300"></div>
-                            <div class="timeline-date text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-1 transition duration-300">2024 - 2025</div>
-                            <h4 class="text-xl font-bold mb-2">Frontend Developer</h4>
-                            <p class="text-gray-600 dark:text-gray-300">
-                                Built responsive UIs and single-page applications using React and Vue.js.
-                            </p>
-                        </div>
-                        
-                        <!-- Timeline item 3 -->
-                        <div class="timeline-item relative pl-16" data-aos="fade-in" data-aos-delay="250">
-                            <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full bg-indigo-400 border-4 border-indigo-100 dark:border-indigo-900/50 transition duration-300"></div>
-                            <div class="timeline-date text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-1 transition duration-300">2023 - 2024</div>
-                            <h4 class="text-xl font-bold mb-2">Freelance Developer</h4>
-                            <p class="text-gray-600 dark:text-gray-300">
-                                Worked with small businesses to create websites and simple web applications.
-                            </p>
-                        </div>
-                        
-                        <!-- Timeline item 4 -->
-                        <div class="timeline-item relative pl-16" data-aos="fade-in" data-aos-delay="300">
-                            <div class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full bg-indigo-400 border-4 border-indigo-100 dark:border-indigo-900/50 transition duration-300"></div>
-                            <div class="timeline-date text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-1 transition duration-300">2022 -></div>
-                            <h4 class="text-xl font-bold mb-2">Computer Science Student</h4>
-                            <p class="text-gray-600 dark:text-gray-300">
-                                pursuing my Bachelor's degree while building personal projects and contributing to open source.
-                            </p>
-                        </div>
-                    </div>
+                <h4 class="font-bold text-lg mb-2">Clean Code</h4>
+                <p class="text-gray-600 dark:text-gray-300 text-sm">
+                  I write maintainable, well-documented code following best
+                  practices.
+                </p>
+              </div>
+
+              <div
+                class="about-card bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md transition duration-300"
+                data-aos="fade-in"
+                data-aos-delay="150"
+              >
+                <div class="text-3xl text-indigo-600 dark:text-indigo-400 mb-3">
+                  <i class="fas fa-lightbulb"></i>
                 </div>
+                <h4 class="font-bold text-lg mb-2">Problem Solver</h4>
+                <p class="text-gray-600 dark:text-gray-300 text-sm">
+                  I thrive on solving complex problems with elegant solutions.
+                </p>
+              </div>
+
+              <div
+                class="about-card bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md transition duration-300"
+                data-aos="fade-in"
+                data-aos-delay="200"
+              >
+                <div class="text-3xl text-indigo-600 dark:text-indigo-400 mb-3">
+                  <i class="fas fa-users"></i>
+                </div>
+                <h4 class="font-bold text-lg mb-2">Team Player</h4>
+                <p class="text-gray-600 dark:text-gray-300 text-sm">
+                  I collaborate effectively and communicate clearly with teams.
+                </p>
+              </div>
+
+              <div
+                class="about-card bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md transition duration-300"
+                data-aos="fade-in"
+                data-aos-delay="250"
+              >
+                <div class="text-3xl text-indigo-600 dark:text-indigo-400 mb-3">
+                  <i class="fas fa-rocket"></i>
+                </div>
+                <h4 class="font-bold text-lg mb-2">Fast Learner</h4>
+                <p class="text-gray-600 dark:text-gray-300 text-sm">
+                  I quickly adapt to new technologies and frameworks.
+                </p>
+              </div>
             </div>
+          </div>
+
+          <div data-aos="fade-in" data-aos-delay="100">
+            <h3 class="text-2xl font-bold mb-6">My Journey</h3>
+            <div class="space-y-8 relative">
+              <!-- Timeline line -->
+              <div
+                class="absolute left-5 top-0 bottom-0 w-0.5 bg-indigo-200 dark:bg-indigo-900/50 transform -translate-x-1/2"
+              ></div>
+
+              <!-- Timeline item 1 -->
+              <div
+                class="timeline-item relative pl-16"
+                data-aos="fade-in"
+                data-aos-delay="150"
+              >
+                <div
+                  class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full bg-indigo-400 border-4 border-indigo-100 dark:border-indigo-900/50 transition duration-300"
+                ></div>
+                <div
+                  class="timeline-date text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-1 transition duration-300"
+                >
+                  2025 - Present
+                </div>
+                <h4 class="text-xl font-bold mb-2">
+                  Senior Full Stack Developer
+                </h4>
+                <p class="text-gray-600 dark:text-gray-300">
+                  Leading development teams and architecting complex web
+                  applications for enterprise clients.
+                </p>
+              </div>
+
+              <!-- Timeline item 2 -->
+              <div
+                class="timeline-item relative pl-16"
+                data-aos="fade-in"
+                data-aos-delay="200"
+              >
+                <div
+                  class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full bg-indigo-400 border-4 border-indigo-100 dark:border-indigo-900/50 transition duration-300"
+                ></div>
+                <div
+                  class="timeline-date text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-1 transition duration-300"
+                >
+                  2024 - 2025
+                </div>
+                <h4 class="text-xl font-bold mb-2">Frontend Developer</h4>
+                <p class="text-gray-600 dark:text-gray-300">
+                  Built responsive UIs and single-page applications using React
+                  and Vue.js.
+                </p>
+              </div>
+
+              <!-- Timeline item 3 -->
+              <div
+                class="timeline-item relative pl-16"
+                data-aos="fade-in"
+                data-aos-delay="250"
+              >
+                <div
+                  class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full bg-indigo-400 border-4 border-indigo-100 dark:border-indigo-900/50 transition duration-300"
+                ></div>
+                <div
+                  class="timeline-date text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-1 transition duration-300"
+                >
+                  2023 - 2024
+                </div>
+                <h4 class="text-xl font-bold mb-2">Freelance Developer</h4>
+                <p class="text-gray-600 dark:text-gray-300">
+                  Worked with small businesses to create websites and simple web
+                  applications.
+                </p>
+              </div>
+
+              <!-- Timeline item 4 -->
+              <div
+                class="timeline-item relative pl-16"
+                data-aos="fade-in"
+                data-aos-delay="300"
+              >
+                <div
+                  class="timeline-dot absolute left-0 top-1 w-4 h-4 rounded-full bg-indigo-400 border-4 border-indigo-100 dark:border-indigo-900/50 transition duration-300"
+                ></div>
+                <div
+                  class="timeline-date text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-1 transition duration-300"
+                >
+                  2022 ->
+                </div>
+                <h4 class="text-xl font-bold mb-2">Computer Science Student</h4>
+                <p class="text-gray-600 dark:text-gray-300">
+                  pursuing my Bachelor's degree while building personal projects
+                  and contributing to open source.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Certifications Section -->
     <section id="certifications" class="py-16 bg-gray-100 dark:bg-gray-800/50">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4" data-aos="fade-in">Certifications</h2>
-            <p class="text-lg text-gray-600 dark:text-gray-300 text-center max-w-2xl mx-auto mb-12" data-aos="fade-in" data-aos-delay="100">
-                Professional certifications that validate my expertise and commitment to continuous learning.
-            </p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Certification 1 -->
-                <div class="certification-card bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md transition duration-300" data-aos="fade-in">
-                    <div class="p-6">
-                        <div class="flex items-center mb-4">
-                            <div class="bg-indigo-100 dark:bg-indigo-900/30 p-3 rounded-lg mr-4">
-                                <i class="fab fa-aws text-3xl text-indigo-600 dark:text-indigo-400"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold">PHP Certified Developer</h3>
-                                <p class="text-gray-600 dark:text-gray-300 text-sm">mindluster Web Services</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">
-                            Validates my ability to develop and maintain applications on php server.
-                        </p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm text-gray-500 dark:text-gray-400">Issued: december 2024</span>
-                            <a href="https://www.mindluster.com/storage/cer/55b28c76.jpg" class="text-indigo-600 dark:text-indigo-400 hover:underline text-sm">View Credential</a>
-                        </div>
-                    </div>
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center mb-4"
+          data-aos="fade-in"
+        >
+          Certifications
+        </h2>
+        <p
+          class="text-lg text-gray-600 dark:text-gray-300 text-center max-w-2xl mx-auto mb-12"
+          data-aos="fade-in"
+          data-aos-delay="100"
+        >
+          Professional certifications that validate my expertise and commitment
+          to continuous learning.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Certification 1 -->
+          <div
+            class="certification-card bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md transition duration-300"
+            data-aos="fade-in"
+          >
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div
+                  class="bg-indigo-100 dark:bg-indigo-900/30 p-3 rounded-lg mr-4"
+                >
+                  <i
+                    class="fab fa-aws text-3xl text-indigo-600 dark:text-indigo-400"
+                  ></i>
                 </div>
-                 <!-- Certification 3-->
-                 <div class="certification-card bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md transition duration-300" data-aos="fade-in">
-                    <div class="p-6">
-                        <div class="flex items-center mb-4">
-                            <div class="bg-indigo-100 dark:bg-indigo-900/30 p-3 rounded-lg mr-4">
-                                <i class="fab fa-aws text-3xl text-indigo-600 dark:text-indigo-400"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold">WRRIC HACKATON</h3>
-                                <p class="text-gray-600 dark:text-gray-300 text-sm">western consortium</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">
-                            Managed to attend this innovators consortium and presented my Afya Axis project empowering matters health
-                        </p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm text-gray-500 dark:text-gray-400">Issued: february 2025</span>
-                            <a href="https://drive.google.com/file/d/17R0zfQRt5cFnIpSGzB0PFPVZerbToIIT/view?usp=drive_link" class="text-indigo-600 dark:text-indigo-400 hover:underline text-sm">View Credential</a>
-                        </div>
-                    </div>
+                <div>
+                  <h3 class="text-xl font-bold">PHP Certified Developer</h3>
+                  <p class="text-gray-600 dark:text-gray-300 text-sm">
+                    mindluster Web Services
+                  </p>
                 </div>
-                
-                <!-- Certification 2 -->
-                <div class="certification-card bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md transition duration-300" data-aos="fade-in" data-aos-delay="100">
-                    <div class="p-6">
-                        <div class="flex items-center mb-4">
-                            <div class="bg-indigo-100 dark:bg-indigo-900/30 p-3 rounded-lg mr-4">
-                                <i class="fab fa-microsoft text-3xl text-indigo-600 dark:text-indigo-400"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold">C programming</h3>
-                                <p class="text-gray-600 dark:text-gray-300 text-sm">Mindluster</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">
-                            Demonstrates my skills in designing, building, testing, and maintaining cloud applications on the C language.
-                        </p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm text-gray-500 dark:text-gray-400">Issued: dec 2024</span>
-                            <a href="https://www.mindluster.com/storage/cer/17843d03.jpg" class="text-indigo-600 dark:text-indigo-400 hover:underline text-sm">View Credential</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Certification 3 -->
-                <div class="certification-card bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md transition duration-300" data-aos="fade-in" data-aos-delay="200">
-                    <div class="p-6">
-                        <div class="flex items-center mb-4">
-                            <div class="bg-indigo-100 dark:bg-indigo-900/30 p-3 rounded-lg mr-4">
-                                <i class="fab fa-react text-3xl text-indigo-600 dark:text-indigo-400"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold">tailwind certified dev</h3>
-                                <p class="text-gray-600 dark:text-gray-300 text-sm">youtube Training</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">
-                            Confirms my expertise in building modern web applications with tailwind css framework.
-                        </p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm text-gray-500 dark:text-gray-400">Issued: december 2024</span>
-                            <a href="https://www.mindluster.com/storage/cer/d3533b67.jpg" class="text-indigo-600 dark:text-indigo-400 hover:underline text-sm">View Credential</a>
-                        </div>
-                    </div>
-                </div>
+              </div>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Validates my ability to develop and maintain applications on php
+                server.
+              </p>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500 dark:text-gray-400"
+                  >Issued: december 2024</span
+                >
+                <a
+                  href="https://www.mindluster.com/storage/cer/55b28c76.jpg"
+                  class="text-indigo-600 dark:text-indigo-400 hover:underline text-sm"
+                  >View Credential</a
+                >
+              </div>
             </div>
+          </div>
+          <!-- Certification 3-->
+          <div
+            class="certification-card bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md transition duration-300"
+            data-aos="fade-in"
+          >
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div
+                  class="bg-indigo-100 dark:bg-indigo-900/30 p-3 rounded-lg mr-4"
+                >
+                  <i
+                    class="fab fa-aws text-3xl text-indigo-600 dark:text-indigo-400"
+                  ></i>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold">WRRIC HACKATON</h3>
+                  <p class="text-gray-600 dark:text-gray-300 text-sm">
+                    western consortium
+                  </p>
+                </div>
+              </div>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Managed to attend this innovators consortium and presented my
+                Afya Axis project empowering matters health
+              </p>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500 dark:text-gray-400"
+                  >Issued: february 2025</span
+                >
+                <a
+                  href="https://drive.google.com/file/d/17R0zfQRt5cFnIpSGzB0PFPVZerbToIIT/view?usp=drive_link"
+                  class="text-indigo-600 dark:text-indigo-400 hover:underline text-sm"
+                  >View Credential</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Certification 2 -->
+          <div
+            class="certification-card bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md transition duration-300"
+            data-aos="fade-in"
+            data-aos-delay="100"
+          >
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div
+                  class="bg-indigo-100 dark:bg-indigo-900/30 p-3 rounded-lg mr-4"
+                >
+                  <i
+                    class="fab fa-microsoft text-3xl text-indigo-600 dark:text-indigo-400"
+                  ></i>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold">C programming</h3>
+                  <p class="text-gray-600 dark:text-gray-300 text-sm">
+                    Mindluster
+                  </p>
+                </div>
+              </div>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Demonstrates my skills in designing, building, testing, and
+                maintaining cloud applications on the C language.
+              </p>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500 dark:text-gray-400"
+                  >Issued: dec 2024</span
+                >
+                <a
+                  href="https://www.mindluster.com/storage/cer/17843d03.jpg"
+                  class="text-indigo-600 dark:text-indigo-400 hover:underline text-sm"
+                  >View Credential</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Certification 3 -->
+          <div
+            class="certification-card bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md transition duration-300"
+            data-aos="fade-in"
+            data-aos-delay="200"
+          >
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div
+                  class="bg-indigo-100 dark:bg-indigo-900/30 p-3 rounded-lg mr-4"
+                >
+                  <i
+                    class="fab fa-react text-3xl text-indigo-600 dark:text-indigo-400"
+                  ></i>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold">tailwind certified dev</h3>
+                  <p class="text-gray-600 dark:text-gray-300 text-sm">
+                    youtube Training
+                  </p>
+                </div>
+              </div>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Confirms my expertise in building modern web applications with
+                tailwind css framework.
+              </p>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500 dark:text-gray-400"
+                  >Issued: december 2024</span
+                >
+                <a
+                  href="https://www.mindluster.com/storage/cer/d3533b67.jpg"
+                  class="text-indigo-600 dark:text-indigo-400 hover:underline text-sm"
+                  >View Credential</a
+                >
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Testimonials Section -->
     <section id="testimonials" class="py-16 bg-white dark:bg-gray-800">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4" data-aos="fade-in">What People Say</h2>
-            <p class="text-lg text-gray-600 dark:text-gray-300 text-center max-w-2xl mx-auto mb-12" data-aos="fade-in" data-aos-delay="100">
-                Feedback from clients and colleagues I've worked with.
-            </p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
-                <div class="testimonial-card bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md" data-aos="fade-in">
-                    <div class="flex items-center mb-4">
-                        <img src="https://i.pinimg.com/474x/09/bd/c4/09bdc47aaddee3bf3b8ba0f81ba75eed.jpg" alt="Sarah Johnson" class="w-12 h-12 rounded-full mr-4">
-                        <div>
-                            <h4 class="font-bold">Elisha kwena</h4>
-                            <p class="text-gray-600 dark:text-gray-300 text-sm">TechCorp</p>
-                        </div>
-                    </div>
-                    <div class="text-gray-600 dark:text-gray-300 mb-4">
-                        <i class="fas fa-quote-left text-indigo-400 mr-2"></i>
-                        harry delivered our e-commerce platform ahead of schedule with exceptional quality. His attention to detail and problem-solving skills are unmatched.
-                        <i class="fas fa-quote-right text-indigo-400 ml-2"></i>
-                    </div>
-                    <div class="flex text-yellow-400">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 2 -->
-                <div class="testimonial-card bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md" data-aos="fade-in" data-aos-delay="100">
-                    <div class="flex items-center mb-4">
-                        <img src="https://i.pinimg.com/236x/ca/88/aa/ca88aac60d93a08ba65bb5275d0ea084.jpg" alt="Michael Chen" class="w-12 h-12 rounded-full mr-4">
-                        <div>
-                            <h4 class="font-bold">Griffine ombogo</h4>
-                            <p class="text-gray-600 dark:text-gray-300 text-sm">CTO, slytex solutions</p>
-                        </div>
-                    </div>
-                    <div class="text-gray-600 dark:text-gray-300 mb-4">
-                        <i class="fas fa-quote-left text-indigo-400 mr-2"></i>
-                        Working with harry was a game-changer for our team. He not only built our MVP but also mentored our junior developers, elevating the entire team's skills.
-                        <i class="fas fa-quote-right text-indigo-400 ml-2"></i>
-                    </div>
-                    <div class="flex text-yellow-400">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 3 -->
-                <div class="testimonial-card bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md" data-aos="fade-in" data-aos-delay="200">
-                    <div class="flex items-center mb-4">
-                        <img src="https://i.pinimg.com/474x/e2/97/94/e297943fc2a3f265e90d6bd0ca24a603.jpg" alt="Emma Rodriguez" class="w-12 h-12 rounded-full mr-4">
-                        <div>
-                            <h4 class="font-bold">Nicole june</h4>
-                            <p class="text-gray-600 dark:text-gray-300 text-sm"> DevSolutions</p>
-                        </div>
-                    </div>
-                    <div class="text-gray-600 dark:text-gray-300 mb-4">
-                        <i class="fas fa-quote-left text-indigo-400 mr-2"></i>
-                        harrys architectural decisions on our enterprise application saved us countless hours of maintenance. His code is clean, well-documented, and scalable.
-                        <i class="fas fa-quote-right text-indigo-400 ml-2"></i>
-                    </div>
-                    <div class="flex text-yellow-400">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                </div>
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center mb-4"
+          data-aos="fade-in"
+        >
+          What People Say
+        </h2>
+        <p
+          class="text-lg text-gray-600 dark:text-gray-300 text-center max-w-2xl mx-auto mb-12"
+          data-aos="fade-in"
+          data-aos-delay="100"
+        >
+          Feedback from clients and colleagues I've worked with.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Testimonial 1 -->
+          <div
+            class="testimonial-card bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md"
+            data-aos="fade-in"
+          >
+            <div class="flex items-center mb-4">
+              <img
+                src="https://i.pinimg.com/474x/09/bd/c4/09bdc47aaddee3bf3b8ba0f81ba75eed.jpg"
+                alt="Sarah Johnson"
+                class="w-12 h-12 rounded-full mr-4"
+              />
+              <div>
+                <h4 class="font-bold">Elisha kwena</h4>
+                <p class="text-gray-600 dark:text-gray-300 text-sm">TechCorp</p>
+              </div>
             </div>
+            <div class="text-gray-600 dark:text-gray-300 mb-4">
+              <i class="fas fa-quote-left text-indigo-400 mr-2"></i>
+              harry delivered our e-commerce platform ahead of schedule with
+              exceptional quality. His attention to detail and problem-solving
+              skills are unmatched.
+              <i class="fas fa-quote-right text-indigo-400 ml-2"></i>
+            </div>
+            <div class="flex text-yellow-400">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div
+            class="testimonial-card bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md"
+            data-aos="fade-in"
+            data-aos-delay="100"
+          >
+            <div class="flex items-center mb-4">
+              <img
+                src="https://i.pinimg.com/236x/ca/88/aa/ca88aac60d93a08ba65bb5275d0ea084.jpg"
+                alt="Michael Chen"
+                class="w-12 h-12 rounded-full mr-4"
+              />
+              <div>
+                <h4 class="font-bold">Griffine ombogo</h4>
+                <p class="text-gray-600 dark:text-gray-300 text-sm">
+                  CTO, slytex solutions
+                </p>
+              </div>
+            </div>
+            <div class="text-gray-600 dark:text-gray-300 mb-4">
+              <i class="fas fa-quote-left text-indigo-400 mr-2"></i>
+              Working with harry was a game-changer for our team. He not only
+              built our MVP but also mentored our junior developers, elevating
+              the entire team's skills.
+              <i class="fas fa-quote-right text-indigo-400 ml-2"></i>
+            </div>
+            <div class="flex text-yellow-400">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div
+            class="testimonial-card bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md"
+            data-aos="fade-in"
+            data-aos-delay="200"
+          >
+            <div class="flex items-center mb-4">
+              <img
+                src="https://i.pinimg.com/474x/e2/97/94/e297943fc2a3f265e90d6bd0ca24a603.jpg"
+                alt="Emma Rodriguez"
+                class="w-12 h-12 rounded-full mr-4"
+              />
+              <div>
+                <h4 class="font-bold">Nicole june</h4>
+                <p class="text-gray-600 dark:text-gray-300 text-sm">
+                  DevSolutions
+                </p>
+              </div>
+            </div>
+            <div class="text-gray-600 dark:text-gray-300 mb-4">
+              <i class="fas fa-quote-left text-indigo-400 mr-2"></i>
+              harrys architectural decisions on our enterprise application saved
+              us countless hours of maintenance. His code is clean,
+              well-documented, and scalable.
+              <i class="fas fa-quote-right text-indigo-400 ml-2"></i>
+            </div>
+            <div class="flex text-yellow-400">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Projects Section -->
     <section id="projects" class="py-16 bg-gray-100 dark:bg-gray-800/50">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4" data-aos="fade-in">My Projects</h2>
-            <p class="text-lg text-gray-600 dark:text-gray-300 text-center max-w-2xl mx-auto mb-12" data-aos="fade-in" data-aos-delay="100">
-                Here are some of my recent projects. Each one was built to solve a specific problem or explore new technologies.
-            </p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <div class="project-card bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md transition duration-300" data-aos="fade-in">
-                    <div class="h-48 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" 
-                             alt="E-commerce Dashboard" 
-                             class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">E-commerce Dashboard</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">
-                            A comprehensive dashboard for e-commerce businesses with analytics, inventory management, and order processing.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="skill-pill bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full text-sm">React</span>
-                            <span class="skill-pill bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full text-sm">Node.js</span>
-                            <span class="skill-pill bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full text-sm">MongoDB</span>
-                        </div>
-                        <div class="flex space-x-4">
-                            <a href="#" class="text-indigo-600 dark:text-indigo-400 hover:underline">Live Demo</a>
-                            <a href="#" class="text-gray-600 dark:text-gray-300 hover:underline">View Code</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 2 -->
-                <div class="project-card bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md transition duration-300" data-aos="fade-in" data-aos-delay="100">
-                    <div class="h-48 overflow-hidden">
-                        <img src="https://i.pinimg.com/236x/45/53/8b/45538b1e2e3a8d3636a5f483b9631446.jpg" 
-                             alt="afya" 
-                             class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">AFYA AXIS</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">
-                            A collaborative hospital management application with real-time updates, team features, and productivity analytics plus an admin panel to register both clinics and doctors.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="skill-pill bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full text-sm">Vue.js</span>
-                            <span class="skill-pill bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full text-sm">Firebase</span>
-                            <span class="skill-pill bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full text-sm">Tailwind CSS</span>
-                        </div>
-                        <div class="flex space-x-4">
-                            <a href="#" class="text-indigo-600 dark:text-indigo-400 hover:underline">Live Demo</a>
-                            <a href="#" class="text-gray-600 dark:text-gray-300 hover:underline">View Code</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 3 -->
-                <div class="project-card bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md transition duration-300" data-aos="fade-in" data-aos-delay="200">
-                    <div class="h-48 overflow-hidden">
-                        <img src="https://i.pinimg.com/236x/25/c1/20/25c120cb76857d55ff47ecd22c518c1e.jpg" 
-                             alt="Hotelr" 
-                             class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Hotel management website</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">
-                            A mobile-first application that tracks all hotel activities plus a restaurant section where you can order your food.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="skill-pill bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full text-sm">React Native</span>
-                            <span class="skill-pill bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full text-sm">GraphQL</span>
-                            <span class="skill-pill bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full text-sm">Python</span>
-                        </div>
-                        <div class="flex space-x-4">
-                            <a href="#" class="text-indigo-600 dark:text-indigo-400 hover:underline">Live Demo</a>
-                            <a href="#" class="text-gray-600 dark:text-gray-300 hover:underline">View Code</a>
-                        </div>
-                    </div>
-                </div>
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center mb-4"
+          data-aos="fade-in"
+        >
+          My Projects
+        </h2>
+        <p
+          class="text-lg text-gray-600 dark:text-gray-300 text-center max-w-2xl mx-auto mb-12"
+          data-aos="fade-in"
+          data-aos-delay="100"
+        >
+          Here are some of my recent projects. Each one was built to solve a
+          specific problem or explore new technologies.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Project 1 -->
+          <div
+            class="project-card bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md transition duration-300"
+            data-aos="fade-in"
+          >
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
+                alt="E-commerce Dashboard"
+                class="w-full h-full object-cover"
+              />
             </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">wangui nurtures</h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                a mental health organisation platform that offers resources,
+                counseling services, and community support to promote mental
+                well being.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="skill-pill bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full text-sm"
+                  >next js
+                </span>
+                <span
+                  class="skill-pill bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full text-sm"
+                  >Node.js</span
+                >
+                <span
+                  class="skill-pill bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full text-sm"
+                  >MongoDB</span
+                >
+              </div>
+              <div class="flex space-x-4">
+                <a
+                  href="https://wangui-nurtures.vercel.app/"
+                  class="text-indigo-600 dark:text-indigo-400 hover:underline"
+                  >Live Demo</a
+                >
+                <a
+                  href="#"
+                  class="text-gray-600 dark:text-gray-300 hover:underline"
+                  >View Code</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div
+            class="project-card bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md transition duration-300"
+            data-aos="fade-in"
+            data-aos-delay="100"
+          >
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://i.pinimg.com/236x/45/53/8b/45538b1e2e3a8d3636a5f483b9631446.jpg"
+                alt="afya"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">AFYA AXIS</h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                A collaborative hospital management application with real-time
+                updates, team features, and productivity analytics plus an admin
+                panel to register both clinics and doctors.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="skill-pill bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full text-sm"
+                  >Vue.js</span
+                >
+                <span
+                  class="skill-pill bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full text-sm"
+                  >Firebase</span
+                >
+                <span
+                  class="skill-pill bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full text-sm"
+                  >Tailwind CSS</span
+                >
+              </div>
+              <div class="flex space-x-4">
+                <a
+                  href="#"
+                  class="text-indigo-600 dark:text-indigo-400 hover:underline"
+                  >Live Demo</a
+                >
+                <a
+                  href="#"
+                  class="text-gray-600 dark:text-gray-300 hover:underline"
+                  >View Code</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div
+            class="project-card bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md transition duration-300"
+            data-aos="fade-in"
+            data-aos-delay="200"
+          >
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://i.pinimg.com/236x/25/c1/20/25c120cb76857d55ff47ecd22c518c1e.jpg"
+                alt="Hotelr"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Hotel management website</h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                A mobile-first application that tracks all hotel activities plus
+                a restaurant section where you can order your food.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="skill-pill bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full text-sm"
+                  >React Native</span
+                >
+                <span
+                  class="skill-pill bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full text-sm"
+                  >GraphQL</span
+                >
+                <span
+                  class="skill-pill bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full text-sm"
+                  >Python</span
+                >
+              </div>
+              <div class="flex space-x-4">
+                <a
+                  href="#"
+                  class="text-indigo-600 dark:text-indigo-400 hover:underline"
+                  >Live Demo</a
+                >
+                <a
+                  href="#"
+                  class="text-gray-600 dark:text-gray-300 hover:underline"
+                  >View Code</a
+                >
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Skills Section -->
     <section id="skills" class="py-16">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4" data-aos="fade-in">My Skills</h2>
-            <p class="text-lg text-gray-600 dark:text-gray-300 text-center max-w-2xl mx-auto mb-12" data-aos="fade-in" data-aos-delay="100">
-                I've worked with a variety of technologies across the full stack. Here are some of my core competencies.
-            </p>
-            
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                <!-- Skill 1 -->
-                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md text-center" data-aos="fade-in" data-aos-delay="50">
-                    <div class="text-4xl mb-4 text-indigo-600 dark:text-indigo-400">
-                        <i class="fab fa-js"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">JavaScript</h3>
-                    <p class="text-gray-600 dark:text-gray-300">Node.js, Express</p>
-                </div>
-                
-                <!-- Skill 2 -->
-                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md text-center" data-aos="fade-in" data-aos-delay="100">
-                    <div class="text-4xl mb-4 text-indigo-600 dark:text-indigo-400">
-                        <i class="fab fa-react"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">php</h3>
-                    <p class="text-gray-600 dark:text-gray-300">laravel</p>
-                </div>
-                
-                <!-- Skill 3 -->
-                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md text-center" data-aos="fade-in" data-aos-delay="150">
-                    <div class="text-4xl mb-4 text-indigo-600 dark:text-indigo-400">
-                        <i class="fab fa-node-js"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Node.js</h3>
-                    <p class="text-gray-600 dark:text-gray-300">REST APIs, Authentication</p>
-                </div>
-                
-                <!-- Skill 4 -->
-                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md text-center" data-aos="fade-in" data-aos-delay="200">
-                    <div class="text-4xl mb-4 text-indigo-600 dark:text-indigo-400">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Databases</h3>
-                    <p class="text-gray-600 dark:text-gray-300">MongoDB, mySQL</p>
-                </div>
-                
-                <!-- Skill 5 -->
-                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md text-center" data-aos="fade-in" data-aos-delay="250">
-                    <div class="text-4xl mb-4 text-indigo-600 dark:text-indigo-400">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">HTML/CSS</h3>
-                    <p class="text-gray-600 dark:text-gray-300">Tailwind, Sass, Responsive</p>
-                </div>
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center mb-4"
+          data-aos="fade-in"
+        >
+          My Skills
+        </h2>
+        <p
+          class="text-lg text-gray-600 dark:text-gray-300 text-center max-w-2xl mx-auto mb-12"
+          data-aos="fade-in"
+          data-aos-delay="100"
+        >
+          I've worked with a variety of technologies across the full stack. Here
+          are some of my core competencies.
+        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <!-- Skill 1 -->
+          <div
+            class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md text-center"
+            data-aos="fade-in"
+            data-aos-delay="50"
+          >
+            <div class="text-4xl mb-4 text-indigo-600 dark:text-indigo-400">
+              <i class="fab fa-js"></i>
             </div>
+            <h3 class="text-xl font-bold mb-2">JavaScript</h3>
+            <p class="text-gray-600 dark:text-gray-300">Node.js, Express</p>
+          </div>
+
+          <!-- Skill 2 -->
+          <div
+            class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md text-center"
+            data-aos="fade-in"
+            data-aos-delay="100"
+          >
+            <div class="text-4xl mb-4 text-indigo-600 dark:text-indigo-400">
+              <i class="fab fa-react"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2">php</h3>
+            <p class="text-gray-600 dark:text-gray-300">laravel</p>
+          </div>
+
+          <!-- Skill 3 -->
+          <div
+            class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md text-center"
+            data-aos="fade-in"
+            data-aos-delay="150"
+          >
+            <div class="text-4xl mb-4 text-indigo-600 dark:text-indigo-400">
+              <i class="fab fa-node-js"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Node.js</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              REST APIs, Authentication
+            </p>
+          </div>
+
+          <!-- Skill 4 -->
+          <div
+            class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md text-center"
+            data-aos="fade-in"
+            data-aos-delay="200"
+          >
+            <div class="text-4xl mb-4 text-indigo-600 dark:text-indigo-400">
+              <i class="fas fa-database"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Databases</h3>
+            <p class="text-gray-600 dark:text-gray-300">MongoDB, mySQL</p>
+          </div>
+
+          <!-- Skill 5 -->
+          <div
+            class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md text-center"
+            data-aos="fade-in"
+            data-aos-delay="250"
+          >
+            <div class="text-4xl mb-4 text-indigo-600 dark:text-indigo-400">
+              <i class="fas fa-code"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2">HTML/CSS</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              Tailwind, Sass, Responsive
+            </p>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="py-16 bg-gray-100 dark:bg-gray-800/50">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4" data-aos="fade-in">Get In Touch</h2>
-            <p class="text-lg text-gray-600 dark:text-gray-300 text-center max-w-2xl mx-auto mb-12" data-aos="fade-in" data-aos-delay="100">
-                Have a project in mind or want to discuss potential opportunities? Feel free to reach out!
-            </p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div data-aos="fade-in">
-                    <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
-                    
-                    <div class="space-y-6">
-                        <div class="flex items-start">
-                            <div class="text-indigo-600 dark:text-indigo-400 mt-1 mr-4">
-                                <i class="fas fa-envelope text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-lg">Email</h4>
-                                <p class="text-gray-600 dark:text-gray-300">harrisonopondo4696@gmail.com</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="text-indigo-600 dark:text-indigo-400 mt-1 mr-4">
-                                <i class="fas fa-phone-alt text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-lg">Phone</h4>
-                                <p class="text-gray-600 dark:text-gray-300">0115414231</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="text-indigo-600 dark:text-indigo-400 mt-1 mr-4">
-                                <i class="fas fa-map-marker-alt text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-lg">Location</h4>
-                                <p class="text-gray-600 dark:text-gray-300">Kisii Kenya</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-8">
-                        <h4 class="font-bold text-lg mb-4">Follow Me</h4>
-                        <div class="flex space-x-4">
-                            <a href="https://github.com/Meatycrude/Meatycrude" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition text-2xl">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="#" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition text-2xl">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a href="#" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition text-2xl">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition text-2xl">
-                                <i class="fab fa-stack-overflow"></i>
-                            </a>
-                        </div>
-                    </div>
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center mb-4"
+          data-aos="fade-in"
+        >
+          Get In Touch
+        </h2>
+        <p
+          class="text-lg text-gray-600 dark:text-gray-300 text-center max-w-2xl mx-auto mb-12"
+          data-aos="fade-in"
+          data-aos-delay="100"
+        >
+          Have a project in mind or want to discuss potential opportunities?
+          Feel free to reach out!
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div data-aos="fade-in">
+            <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+
+            <div class="space-y-6">
+              <div class="flex items-start">
+                <div class="text-indigo-600 dark:text-indigo-400 mt-1 mr-4">
+                  <i class="fas fa-envelope text-xl"></i>
                 </div>
-                
-                <div data-aos="fade-in" data-aos-delay="100">
-                    <h3 class="text-2xl font-bold mb-6">Send Me a Message</h3>
-                    <form id="contact-form" action="https://formspree.io/f/harrisonopondo4696@gmail.com" method="POST" class="space-y-4">
-                        <div>
-                            <label for="name" class="block text-gray-700 dark:text-gray-300 mb-2">Your Name</label>
-                            <input type="text" id="name" name="name" class="w-full px-4 py-3 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
-                        </div>
-                        
-                        <div>
-                            <label for="email" class="block text-gray-700 dark:text-gray-300 mb-2">Your Email</label>
-                            <input type="email" id="email" name="email" class="w-full px-4 py-3 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
-                        </div>
-                        
-                        <div>
-                            <label for="subject" class="block text-gray-700 dark:text-gray-300 mb-2">Subject</label>
-                            <input type="text" id="subject" name="subject" class="w-full px-4 py-3 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
-                        </div>
-                        
-                        <div>
-                            <label for="message" class="block text-gray-700 dark:text-gray-300 mb-2">Message</label>
-                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-lg transition">
-                            Send Message
-                        </button>
-                    </form>
+                <div>
+                  <h4 class="font-bold text-lg">Email</h4>
+                  <p class="text-gray-600 dark:text-gray-300">
+                    harrisonopondo4696@gmail.com
+                  </p>
                 </div>
+              </div>
+
+              <div class="flex items-start">
+                <div class="text-indigo-600 dark:text-indigo-400 mt-1 mr-4">
+                  <i class="fas fa-phone-alt text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-lg">Phone</h4>
+                  <p class="text-gray-600 dark:text-gray-300">0115414231</p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div class="text-indigo-600 dark:text-indigo-400 mt-1 mr-4">
+                  <i class="fas fa-map-marker-alt text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-lg">Location</h4>
+                  <p class="text-gray-600 dark:text-gray-300">Kisii Kenya</p>
+                </div>
+              </div>
             </div>
+
+            <div class="mt-8">
+              <h4 class="font-bold text-lg mb-4">Follow Me</h4>
+              <div class="flex space-x-4">
+                <a
+                  href="https://github.com/Meatycrude/Meatycrude"
+                  class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition text-2xl"
+                >
+                  <i class="fab fa-github"></i>
+                </a>
+                <a
+                  href="#"
+                  class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition text-2xl"
+                >
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a
+                  href="#"
+                  class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition text-2xl"
+                >
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a
+                  href="#"
+                  class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition text-2xl"
+                >
+                  <i class="fab fa-stack-overflow"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div data-aos="fade-in" data-aos-delay="100">
+            <h3 class="text-2xl font-bold mb-6">Send Me a Message</h3>
+            <form
+              id="contact-form"
+              action="https://formspree.io/f/harrisonopondo4696@gmail.com"
+              method="POST"
+              class="space-y-4"
+            >
+              <div>
+                <label
+                  for="name"
+                  class="block text-gray-700 dark:text-gray-300 mb-2"
+                  >Your Name</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="w-full px-4 py-3 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  required
+                />
+              </div>
+
+              <div>
+                <label
+                  for="email"
+                  class="block text-gray-700 dark:text-gray-300 mb-2"
+                  >Your Email</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="w-full px-4 py-3 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  required
+                />
+              </div>
+
+              <div>
+                <label
+                  for="subject"
+                  class="block text-gray-700 dark:text-gray-300 mb-2"
+                  >Subject</label
+                >
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  class="w-full px-4 py-3 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  required
+                />
+              </div>
+
+              <div>
+                <label
+                  for="message"
+                  class="block text-gray-700 dark:text-gray-300 mb-2"
+                  >Message</label
+                >
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  class="w-full px-4 py-3 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  required
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-lg transition"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
         </div>
+      </div>
     </section>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Initialize AOS (Animate On Scroll)
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: false
-        });
+      // Initialize AOS (Animate On Scroll)
+      AOS.init({
+        duration: 800,
+        easing: "ease-in-out",
+        once: false,
+      });
 
-        // Dark/Light Mode Toggle
-        const themeToggle = document.getElementById('theme-toggle');
-        const html = document.documentElement;
-        
-        // Check for saved user preference or use system preference
-        const savedTheme = localStorage.getItem('theme') || 
-                         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        html.classList.toggle('dark', savedTheme === 'dark');
-        
-        themeToggle.addEventListener('click', () => {
-            const isDark = html.classList.toggle('dark');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      // Dark/Light Mode Toggle
+      const themeToggle = document.getElementById("theme-toggle");
+      const html = document.documentElement;
+
+      // Check for saved user preference or use system preference
+      const savedTheme =
+        localStorage.getItem("theme") ||
+        (window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light");
+      html.classList.toggle("dark", savedTheme === "dark");
+
+      themeToggle.addEventListener("click", () => {
+        const isDark = html.classList.toggle("dark");
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+      });
+
+      // Mobile Menu Toggle
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      mobileMenuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          // Close mobile menu if open
+          if (!mobileMenu.classList.contains("hidden")) {
+            mobileMenu.classList.add("hidden");
+          }
+
+          const targetId = this.getAttribute("href");
+          const targetElement = document.querySelector(targetId);
+
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: "smooth",
+            });
+          }
         });
-        
-        // Mobile Menu Toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+      });
+
+      // CV Download
+      const downloadCv = document.getElementById("download-cv");
+      if (downloadCv) {
+        downloadCv.addEventListener("click", (e) => {
+          e.preventDefault();
+          alert("CV download would start now.");
         });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // Close mobile menu if open
-                if (!mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
-                }
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
+      }
+
+      // Contact Form Submission
+      const contactForm = document.getElementById("contact-form");
+      if (contactForm) {
+        contactForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          const formData = new FormData(contactForm);
+          const name = formData.get("name");
+          const email = formData.get("email");
+
+          // Submit the form using Formspree
+          fetch(contactForm.action, {
+            method: "POST",
+            body: formData,
+            headers: {
+              Accept: "application/json",
+            },
+          })
+            .then((response) => {
+              if (response.ok) {
+                alert(
+                  `Thank you for your message, ${name}! I'll get back to you soon at ${email}.`
+                );
+                contactForm.reset();
+              } else {
+                throw new Error("Network response was not ok");
+              }
+            })
+            .catch((error) => {
+              alert(
+                "There was a problem sending your message. Please try again later or email me directly at harrisonopondo4696@gmail.com"
+              );
+              console.error("Error:", error);
             });
         });
-        
-        // CV Download
-        const downloadCv = document.getElementById('download-cv');
-        if (downloadCv) {
-            downloadCv.addEventListener('click', (e) => {
-                e.preventDefault();
-                alert('CV download would start now.');
-            });
-        }
-        
-        // Contact Form Submission
-        const contactForm = document.getElementById('contact-form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
-                const formData = new FormData(contactForm);
-                const name = formData.get('name');
-                const email = formData.get('email');
-                
-                // Submit the form using Formspree
-                fetch(contactForm.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                })
-                .then(response => {
-                    if (response.ok) {
-                        alert(`Thank you for your message, ${name}! I'll get back to you soon at ${email}.`);
-                        contactForm.reset();
-                    } else {
-                        throw new Error('Network response was not ok');
-                    }
-                })
-                .catch(error => {
-                    alert('There was a problem sending your message. Please try again later or email me directly at harrisonopondo4696@gmail.com');
-                    console.error('Error:', error);
-                });
-            });
-        }
+      }
     </script>
-</body>
+  </body>
 </html>
